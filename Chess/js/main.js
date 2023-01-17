@@ -102,24 +102,28 @@ for (let i = 0; i < field.length; i++) {
 
 
 
-if (start) {
-    if (field) {
-        for (let horseposition of field) {
-            horseposition.addEventListener(`click`, () => {
-                horseposition.classList.add(`horse`)
-                let pos = "1"
-                horseposition.textContent = pos
-                const positionx = parseInt(horseposition.getAttribute(`pox`));
-                const positiony = parseInt(horseposition.getAttribute(`poy`));
+if (field) {
+    for (let horseposition of field) {
+        horseposition.addEventListener(`click`, () => {
+            horseposition.classList.add(`horse`)
+            let pos = "1"
+            horseposition.textContent = pos
+            const positionx = parseInt(horseposition.getAttribute(`pox`));
+            const positiony = parseInt(horseposition.getAttribute(`poy`));
 
-                console.log(Misak(positionx, positiony));
-            });
-        };
+            console.log(PosibleNextStep(positionx, positiony));
+        });
     };
+};
+
+if (start) {
+    start.addEventListener("click", () => {
+        return
+    })
 }
 
 
-function Misak(positionx, positiony) {
+function PosibleNextStep(positionx, positiony) {
     return [document.querySelector('[pox="' + (+parseInt(positionx) + 1) + '"][poy="' + (+parseInt(positiony) + 2) + '"]'),
         document.querySelector('[pox="' + (+parseInt(positionx) + 2) + '"][poy="' + (+parseInt(positiony) + 1) + '"]'),
         document.querySelector('[pox="' + (+parseInt(positionx) + 2) + '"][poy="' + (+parseInt(positiony) - 1) + '"]'),
@@ -133,4 +137,4 @@ function Misak(positionx, positiony) {
 }
 
 
-// console.log(Misak());
+// console.log(PosibleNextStep());
